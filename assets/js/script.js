@@ -26,7 +26,7 @@ var welcomeScreen = function () {
   // Create Button
   var welcomeButton = document.createElement('button');
   welcomeButton.className = ('welcomeButton');
-  var buttonText = document.createTextNode("Start");
+  var buttonText = document.createTextNode("Start Quiz");
   // Append button
   welcomeButton.appendChild(buttonText);
   var quizArea = document.querySelector('#quiz-area');

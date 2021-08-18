@@ -8,10 +8,34 @@
 header {
   display: flex;
   justify-content: space-between;
+  margin: 10px 10px 0 10px;
+  font-size: 14px;
+}
+
+.highScores {
+  color: #0051ff;
 }
 
 .quiz-area {
   width: 28%;
   margin: auto;
   text-align: center;
+}
+
+.welcomeHeader { 
+  padding: 20px;
+  font-size: 30px;
+}
+
+.welcomeButton {
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #002a86;
+  color: white;
+}
+
+.welcomeButton:hover {
+  background-color: #0051ff;
 }
