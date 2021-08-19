@@ -27,15 +27,35 @@ header {
   font-size: 30px;
 }
 
-.welcomeButton {
+.btn {
   margin: 20px;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   background-color: #002a86;
   color: white;
+  cursor: pointer;
 }
 
-.welcomeButton:hover {
+.btn:hover {
   background-color: #0051ff;
 }
+
+.qAnswers { 
+  display: flex;
+  flex-direction: column;
+  align-items: left; 
+  width: 30%;
+}
+
+.yes-no {
+  border-top: 3px solid #80808075;
+  width: 28%;
+  margin: auto;
+}
+
+/* Utilities */
+.textLeft { 
+  text-align: left;
+}
+/* Utilites END */
