@@ -83,48 +83,63 @@
   }
   
   function startQuiz() {
-    let counter = 0;
     // Show first question
     var questionsHeader = document.querySelector('#quizHeader');
     questionsHeader.textContent = questions[currentQuestion].q;
     questionsHeader.className = "welcomeHeader textLeft";
-    
+    // create list
+    var answerlist = document.createElement('li');
+    answerlist.id = "answerList";
+    quizArea.appendChild(answerlist);
       // Answer 1
       var answer1Btn = document.createElement('button');
       answer1Btn.textContent = questions[currentQuestion].a;
-      answer1Btn.id = `answer${counter}Btn`;
+      answer1Btn.id = 'a';
       answer1Btn.className = ("btn qAnswers");
-      quizArea.appendChild(answer1Btn);
-      console.log(answer1Btn.id)
+      answerlist.appendChild(answer1Btn);
       // Answer 2
-      counter++;
       var answer2Btn = document.createElement('button');
       answer2Btn.textContent = questions[currentQuestion].b;
-      answer2Btn.id = `answer${counter}Btn`;
+      answer2Btn.id = 'b';
       answer2Btn.className = ("btn qAnswers");
-      quizArea.appendChild(answer2Btn);
-      console.log(answer2Btn.id)
+      answerlist.appendChild(answer2Btn);
       // Answer 3
-      counter++;
       var answer3Btn = document.createElement('button');
       answer3Btn.textContent = questions[currentQuestion].c;
-      answer3Btn.id = `answer${counter}Btn`;
+      answer3Btn.id = 'c';
       answer3Btn.className = ("btn qAnswers");
-      quizArea.appendChild(answer3Btn);
-      console.log(answer3Btn.id)
+      answerlist.appendChild(answer3Btn);
       // Answer 4
-      counter++;
       var answer4Btn = document.createElement('button');
       answer4Btn.textContent = questions[currentQuestion].d;
-      answer4Btn.id = `answer${counter}Btn`;
+      answer4Btn.id = 'd';
       answer4Btn.className = ("btn qAnswers");
-      quizArea.appendChild(answer4Btn);
-      console.log(answer4Btn.id)
+      answerlist.appendChild(answer4Btn);
+
+      document.querySelectorAll('.qAnswers').forEach(function(el){
+        el.addEventListener('click', function() {
+          // alert('id: ' + this.id);
+          if (questions[currentQuestion].q === questions[0].q && this.id === 'a' || questions[currentQuestion].q === questions[1].q && this.id === 'b' || questions[currentQuestion].q === questions[2].q && this.id === 'c' || questions[currentQuestion].q === questions[3].q && this.id === 'd' || questions[currentQuestion].q === questions[4].q && this.id === 'a') {
+            console.log('correct');
+            advanceQuestion();
+          }
+          else {
+            console.log('wrong');
+            advanceQuestion();
+          }
+        });
+      });
+  }
+
+  function quizEnd() {
+    document.querySelector('#answerList').remove();
+    document.querySelector('#quizHeader').textContent = "All done!"
   }
 
   function advanceQuestion() {
     if ((currentQuestion + 1) >= questions.length) {
       // End of array
+      quizEnd();
     } else {
       currentQuestion++;
       var questionsHeader = document.querySelector('#quizHeader');

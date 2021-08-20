@@ -12,6 +12,10 @@ header {
   font-size: 14px;
 }
 
+li {
+  list-style: none;
+}
+
 .highScores {
   color: #0051ff;
 }
