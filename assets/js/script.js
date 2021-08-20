@@ -5,7 +5,7 @@
       b: '2. booleans',
       c: '3. alerts',
       d: '4. numbers',
-      answer: 'A'
+      answer: 'a'
     },
     {
       q: 'Question 2',
@@ -13,7 +13,7 @@
       b: '2',
       c: '3',
       d: '4',
-      answer: 'B'
+      answer: 'b'
     },
     {
       q: 'Question 3',
@@ -21,7 +21,7 @@
       b: '2',
       c: '3',
       d: '4',
-      answer: 'C'
+      answer: 'c'
     },
     {
       q: 'Question 4',
@@ -29,7 +29,7 @@
       b: '2',
       c: '3',
       d: '4',
-      answer: 'D'
+      answer: 'd'
     },
     {
       q: 'Question 5',
@@ -37,7 +37,7 @@
       b: '2',
       c: '3',
       d: '4',
-      answer: 'A'
+      answer: 'a'
     }
   ]
 
@@ -75,43 +75,51 @@
       welcomePEl.remove();
       // Remove Button
       welcomeButton.remove();
-      
+
       startQuiz();
     });
+
+    
   }
   
   function startQuiz() {
-      // Show first question
-      var questionsHeader = document.querySelector('#quizHeader');
-      questionsHeader.textContent = questions[currentQuestion].q;
-      questionsHeader.className = "welcomeHeader textLeft";
-
+    let counter = 0;
+    // Show first question
+    var questionsHeader = document.querySelector('#quizHeader');
+    questionsHeader.textContent = questions[currentQuestion].q;
+    questionsHeader.className = "welcomeHeader textLeft";
+    
       // Answer 1
       var answer1Btn = document.createElement('button');
       answer1Btn.textContent = questions[currentQuestion].a;
-      answer1Btn.id = "answer1Btn";
+      answer1Btn.id = `answer${counter}Btn`;
       answer1Btn.className = ("btn qAnswers");
       quizArea.appendChild(answer1Btn);
+      console.log(answer1Btn.id)
       // Answer 2
+      counter++;
       var answer2Btn = document.createElement('button');
       answer2Btn.textContent = questions[currentQuestion].b;
-      answer2Btn.id = "answer2Btn";
+      answer2Btn.id = `answer${counter}Btn`;
       answer2Btn.className = ("btn qAnswers");
       quizArea.appendChild(answer2Btn);
+      console.log(answer2Btn.id)
       // Answer 3
+      counter++;
       var answer3Btn = document.createElement('button');
       answer3Btn.textContent = questions[currentQuestion].c;
-      answer3Btn.id = "answer3Btn";
+      answer3Btn.id = `answer${counter}Btn`;
       answer3Btn.className = ("btn qAnswers");
       quizArea.appendChild(answer3Btn);
+      console.log(answer3Btn.id)
       // Answer 4
+      counter++;
       var answer4Btn = document.createElement('button');
       answer4Btn.textContent = questions[currentQuestion].d;
-      answer4Btn.id = "answer4Btn";
+      answer4Btn.id = `answer${counter}Btn`;
       answer4Btn.className = ("btn qAnswers");
       quizArea.appendChild(answer4Btn);
-
-      var answerBtns = document.querySelector('.qAnswers');
+      console.log(answer4Btn.id)
   }
 
   function advanceQuestion() {
