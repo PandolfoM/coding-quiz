@@ -21,6 +21,7 @@ function highscores() {
 clearHS.addEventListener('click', function(){
   // clear all high scores
   localStorage.removeItem('allHSEntries');
+  localStorage.removeItem('highScores');
   // refresh page
   location.reload();
 })
