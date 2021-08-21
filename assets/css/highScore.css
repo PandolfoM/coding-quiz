@@ -4,6 +4,7 @@
 }
 
 .highScoreBtn {
+  margin: 10px 10px 0 0;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -20,7 +21,12 @@
   text-align: left;
 }
 
-
-#displayScore {
+.highScorelist {
+  padding: 5px;
+  margin: 5px 0;
   list-style-position: inside;
+}
+
+.highScorelist:nth-child(odd) {
+  background-color: #0051ff52;
 }
