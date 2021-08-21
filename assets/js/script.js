@@ -43,7 +43,8 @@ var questions = [
 
 let timeLeft = 75;
 let currentQuestion = 0;
-var timerEl = document.querySelector('span');
+let score = 0;
+var timerEl = document.querySelector("span");
 var quizArea = document.querySelector("#quiz-area");
 
 function welcomeScreen() {
@@ -84,22 +85,19 @@ function welcomeScreen() {
 }
 
 function timer() {
-  
-  var timeInterval = setInterval(function() {
+  var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = timeLeft;
       timeLeft--;
-    }
-    else if (timeLeft === 1){
+    } else if (timeLeft === 1) {
       timerEl.textContent = timeLeft;
       timeLeft--;
-    }
-    else {
-      timerEl.textContent = '0';
-      quizEnd();
+    } else {
       clearInterval(timeInterval);
+      timerEl.textContent = "0";
+      quizEnd();
     }
-  }, 1000)
+  }, 1000);
 }
 
 function startQuiz() {
@@ -146,27 +144,23 @@ function startQuiz() {
         (questions[currentQuestion].q === questions[4].q && this.id === "d")
       ) {
         // Correct Answer
-        console.log('correct');
-        var correctLine = document.querySelector('.yes-no')
-        correctLine.style.opacity = '1';
+        score += 3;
+        var correctLine = document.querySelector(".yes-no");
+        correctLine.style.opacity = "1";
         correctLine.innerHTML = "<p class='yes-no-color'>Correct!</p>";
-        var lineInterval = setInterval(function(){
-          document.querySelector('.yes-no').style.opacity = '0';
-          clearInterval();
+        setTimeout(function() {
+          correctLine.style.opacity = "0";
         }, 500);
         advanceQuestion();
       } else {
         // Wrong Answer
-        console.log('wrong');
-        var wrongLine = document.querySelector('.yes-no')
-        wrongLine.style.opacity = '1';
+        var wrongLine = document.querySelector(".yes-no");
+        wrongLine.style.opacity = "1";
         wrongLine.innerHTML = "<p class='yes-no-color'>Wrong!</p>";
-        var lineInterval = setInterval(function(){
-          document.querySelector('.yes-no').style.opacity = '0';
-          clearInterval();
+        setTimeout(function() {
+          wrongLine.style.opacity = "0";
         }, 500);
-
-        timeLeft-=10;
+        timeLeft -= 10;
         advanceQuestion();
       }
     });
@@ -174,19 +168,42 @@ function startQuiz() {
 }
 
 function quizEnd() {
-  document.querySelector("#answerList").remove();
-  document.querySelector("#quizHeader").textContent = "All done!";
+  var allDoneEl = document.querySelector("#quizHeader");
+  allDoneEl.textContent = "All done!";
+
+  var finalScore = document.createElement("p");
+  finalScore.className = "textLeft";
+  finalScore.textContent = "Your final score is " + score;
+  quizArea.appendChild(finalScore);
+
+  var initialInputForm = document.createElement("form");
+  initialInputForm.className = "textLeft padding";
+  initialInputForm.innerHTML =
+    "<label for='initial'>Enter Initials: </label><input type='text' id='initialInput'></input><input class='submit-btn' id='submit-btn' type='submit' value='Submit'></input>";
+  quizArea.appendChild(initialInputForm);
+
+  var initialBtnEl = document.querySelector("#submit-btn");
+  initialBtnEl.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var inital = document.querySelector("#initialInput").value;
+    console.log(inital);
+
+    if (inital === "") {
+    }
+  });
 }
 
 function advanceQuestion() {
   if (currentQuestion + 1 >= questions.length) {
     // End of array
+    document.querySelector("#answerList").remove();
+    document.querySelector("#yes-no").remove();
     quizEnd();
   } else {
     // Continue to next question in array
     currentQuestion++;
-    document.querySelector("#quizHeader").textContent =
-      questions[currentQuestion].q;
+    document.querySelector("#quizHeader").textContent = questions[currentQuestion].q;
     document.querySelector("#a").textContent = questions[currentQuestion].a;
     document.querySelector("#b").textContent = questions[currentQuestion].b;
     document.querySelector("#c").textContent = questions[currentQuestion].c;
