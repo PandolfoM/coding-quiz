@@ -1,16 +1,16 @@
-var displayScore = document.querySelector('#displayScore');
-var displayScoreMarker = document.querySelector('#displayScore::marker');
+var scoreList = document.querySelector('#scoreList');
 
 function highscores() {
-  var getInitial = localStorage.getItem('Initials');
-  var getScore = localStorage.getItem('Score');
+  var savedHS = localStorage.getItem('allHSEntries');
+  if(!savedHS) {
+    return false
+  }
 
-  
-  if (getInitial === null || getInitial === "") {
-    displayScore.textContent = "No high scores";
-  } 
-  else {
-    displayScore.textContent = getInitial + ' - ' + getScore;
+  savedHS = JSON.parse(savedHS)
+
+  for (let i = 0; i < savedHS.length; i++) {
+    console.log(savedHS[i]);
+    document.write(savedHS[i].inital + "<br>")
   }
 }
 

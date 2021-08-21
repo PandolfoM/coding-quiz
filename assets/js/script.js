@@ -191,13 +191,23 @@ function quizEnd() {
     if (inital === "") {
       window.location.href = "../../highscores.html";
     } else {
-      var setInitiallocal = localStorage.setItem('Initials', inital);
-      var setScore = localStorage.setItem('Score', score);
-      console.log(inital);
-      console.log(score);
-      window.location.href = "../../highscores.html";
+      getHighScores();
     }
   });
+}
+
+function getHighScores() {
+  var prevHS = JSON.parse(localStorage.getItem('allHSEntries'));
+  if (prevHS === null) prevHS = [];
+  var hsInitial = document.querySelector("#initialInput").value;
+  var highScores = {
+    'inital': hsInitial,
+    'score': score
+  };
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+  prevHS.push(highScores);
+  localStorage.setItem('allHSEntries', JSON.stringify(prevHS));
+  window.location.href = "../../highscores.html";
 }
 
 function advanceQuestion() {
