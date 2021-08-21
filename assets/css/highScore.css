@@ -1,5 +1,5 @@
 .highScoreHeader { 
-  padding: 40px 0;
+  padding: 40px 0 10px 0;
   font-size: 30px;
 }
 
@@ -18,4 +18,9 @@
 
 .quiz-area {
   text-align: left;
+}
+
+
+#displayScore {
+  list-style-position: inside;
 }

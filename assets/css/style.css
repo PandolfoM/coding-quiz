@@ -12,7 +12,7 @@ header {
   font-size: 14px;
 }
 
-li {
+#answerList {
   list-style: none;
 }
 

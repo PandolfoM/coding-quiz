@@ -191,8 +191,8 @@ function quizEnd() {
     if (inital === "") {
       window.location.href = "../../highscores.html";
     } else {
-      localStorage.setItem('Initials', inital);
-      localStorage.setItem('Score', score);
+      var setInitiallocal = localStorage.setItem('Initials', inital);
+      var setScore = localStorage.setItem('Score', score);
       console.log(inital);
       console.log(score);
       window.location.href = "../../highscores.html";
