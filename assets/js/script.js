@@ -99,7 +99,6 @@ function timer() {
     }
   }, 1000);
 }
-
 function startQuiz() {
   // Show first question
   var questionsHeader = document.querySelector("#quizHeader");
@@ -168,6 +167,8 @@ function startQuiz() {
 }
 
 function quizEnd() {
+  document.querySelector("#answerList").remove();
+  document.querySelector("#yes-no").remove();
   var allDoneEl = document.querySelector("#quizHeader");
   allDoneEl.textContent = "All done!";
 
@@ -213,9 +214,10 @@ function getHighScores() {
 function advanceQuestion() {
   if (currentQuestion + 1 >= questions.length) {
     // End of array
-    document.querySelector("#answerList").remove();
-    document.querySelector("#yes-no").remove();
+    timeLeft = 0;
     quizEnd();
+    
+
   } else {
     // Continue to next question in array
     currentQuestion++;
