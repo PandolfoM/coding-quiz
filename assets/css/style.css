@@ -59,7 +59,8 @@ li {
 }
 
 .yes-no {
-  border-top: 3px solid #80808075;
+  opacity: 0;
+  border-top: 2px solid #80808075;
   width: 28%;
   margin: auto;
 }
@@ -67,5 +68,11 @@ li {
 /* Utilities */
 .textLeft { 
   text-align: left;
+}
+
+.yes-no-color {
+  color: #80808075;
+  padding: 10px;
+  font-size: 20px;
 }
 /* Utilites END */

@@ -135,10 +135,9 @@ function startQuiz() {
   answer4Btn.id = "d";
   answer4Btn.className = "btn qAnswers";
   answerlist.appendChild(answer4Btn);
-
+  // register clicks for buttons
   document.querySelectorAll(".qAnswers").forEach(function (el) {
     el.addEventListener("click", function () {
-      // alert('id: ' + this.id);
       if (
         (questions[currentQuestion].q === questions[0].q && this.id === "a") ||
         (questions[currentQuestion].q === questions[1].q && this.id === "c") ||
@@ -146,12 +145,28 @@ function startQuiz() {
         (questions[currentQuestion].q === questions[3].q && this.id === "c") ||
         (questions[currentQuestion].q === questions[4].q && this.id === "d")
       ) {
-        console.log("correct");
+        // Correct Answer
+        console.log('correct');
+        var correctLine = document.querySelector('.yes-no')
+        correctLine.style.opacity = '1';
+        correctLine.innerHTML = "<p class='yes-no-color'>Correct!</p>";
+        var lineInterval = setInterval(function(){
+          document.querySelector('.yes-no').style.opacity = '0';
+          clearInterval();
+        }, 500);
         advanceQuestion();
       } else {
-        console.log("wrong");
-        timerEl.textContent = timeLeft;
-        timeLeft-70;
+        // Wrong Answer
+        console.log('wrong');
+        var wrongLine = document.querySelector('.yes-no')
+        wrongLine.style.opacity = '1';
+        wrongLine.innerHTML = "<p class='yes-no-color'>Wrong!</p>";
+        var lineInterval = setInterval(function(){
+          document.querySelector('.yes-no').style.opacity = '0';
+          clearInterval();
+        }, 500);
+
+        timeLeft-=10;
         advanceQuestion();
       }
     });
@@ -168,6 +183,7 @@ function advanceQuestion() {
     // End of array
     quizEnd();
   } else {
+    // Continue to next question in array
     currentQuestion++;
     document.querySelector("#quizHeader").textContent =
       questions[currentQuestion].q;
