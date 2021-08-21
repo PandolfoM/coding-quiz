@@ -187,9 +187,15 @@ function quizEnd() {
     event.preventDefault();
 
     var inital = document.querySelector("#initialInput").value;
-    console.log(inital);
-
+    
     if (inital === "") {
+      window.location.href = "../../highscores.html";
+    } else {
+      localStorage.setItem('Initials', inital);
+      localStorage.setItem('Score', score);
+      console.log(inital);
+      console.log(score);
+      window.location.href = "../../highscores.html";
     }
   });
 }

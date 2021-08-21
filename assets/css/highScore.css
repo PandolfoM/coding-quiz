@@ -1,0 +1,21 @@
+.highScoreHeader { 
+  padding: 40px 0;
+  font-size: 30px;
+}
+
+.highScoreBtn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #002a86;
+  color: white;
+  cursor: pointer;
+}
+
+.highScoreBtn:hover {
+  background-color: #0051ff;
+}
+
+.quiz-area {
+  text-align: left;
+}
